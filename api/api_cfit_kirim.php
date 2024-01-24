@@ -1,17 +1,14 @@
 <?php
+require 'url_api.php';
 // Inisialisasi cURL
 $ch = curl_init();
 
 // URL endpoint yang akan menerima data POST
-$url = 'http://192.168.1.20:8000/api/Cfit/Store';
+$url = $url_api . 'api/Cfit/Store';
 
 $data = array(
     'nik' => $_POST['nik'],
     'nama' => $_POST['nama'],
-    'posisi' => $_POST['unit_id'],
-    'usia' => $_POST['usia'],
-    'no_telp' => $_POST['nomor_telp'],
-    'email' => $_POST['email'],
     'test1' => $_POST['sub1'],
     'test2' => $_POST['sub2'],
     'test3' => $_POST['sub3'],
