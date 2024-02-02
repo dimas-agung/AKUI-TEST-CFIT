@@ -53,7 +53,8 @@
 
     .timer {
       position: fixed;
-      margin-left: 30em;
+      top:0;
+      right:20px;
     }
 
     #il {
@@ -73,9 +74,6 @@
         flex-wrap: wrap;
       }
 
-      .timer {
-        margin-left: 0px;
-      }
     }
   </style>
 </head>

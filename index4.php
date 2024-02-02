@@ -52,11 +52,10 @@ session_start();
   }
 
   .timer {
-   width: auto;
-   height: auto;
-   margin: 0;
-   position: fixed;
-  }
+      position: fixed;
+      top:0;
+      right:20px;
+    }
 
   input[type="radio"] {
    margin-left: 1em;
@@ -71,9 +70,6 @@ session_start();
     flex-wrap: wrap;
    }
 
-   .timer {
-    margin-left: 0em;
-   }
   }
  </style>
 </head>

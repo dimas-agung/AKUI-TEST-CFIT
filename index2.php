@@ -50,6 +50,8 @@ session_start();
 
     .timer {
       position: fixed;
+      top:0;
+      right:20px;
     }
 
     @media screen and (max-width: 480px) {
@@ -57,9 +59,6 @@ session_start();
         flex-wrap: wrap;
       }
 
-      .timer {
-        margin-left: 0px;
-      }
     }
   </style>
 </head>

@@ -65,6 +65,8 @@ session_start();
 
     .timer {
       position: fixed;
+      top:0;
+      right:20px;
     }
 
 
@@ -77,10 +79,6 @@ session_start();
       .container {
         flex-wrap: wrap;
 
-      }
-
-      .timer {
-        margin-left: 20em;
       }
 
       button {
