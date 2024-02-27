@@ -15,19 +15,27 @@
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            margin-top: 100px;
+            background-color: #d4edda;
+            /* Bootstrap Success Color */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Adding Box Shadow */
+        }
+    </style>
 </head>
 <body>
-  <form id="berhasil" method="post">
-    <div class="container pt-3">
-      <div class="card border-top border-warning">
-        <div class="card-body">
-          <h5 class="card-title">Terima Kasih telah mengisi Tes</h5>
-          <p class="card-text">Silahkan menunggu informasi selanjutnya dari HR</p>
-          <!-- <button name="submit" type="button" class="btn btn-warning text-light" style="width: 100%">Kirim</button> -->
-        </div>
-      </div>
-    </div>
-  </form>
+  <div class="container text-center">
+        <h1 class="mb-4">Terima Kasih telah mengerjakan Tes CFIT</h1>
+        <p class="lead">Jawaban tes anda telah terkirim <br> silahkan menunggu informasi HR selanjutnya</p>
+  </div>
   <script>
     $(document).ready(function () {
             // Retrieve data from localStorage
@@ -142,7 +150,7 @@
           }).then((result) => {
             if (result.isConfirmed || result.isDismissed) {
               // Redirect to index.php
-              window.location.href = 'index.php';
+              // window.location.href = 'index.php';
             }
           });
         },
