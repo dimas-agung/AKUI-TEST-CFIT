@@ -77,14 +77,25 @@
                
       
       var data = localStorage.getItem('key');
+
+          if (data) {
+            var parsedData = JSON.parse(data);
+            if (parsedData && parsedData.nik) {
+                var nik = parsedData.nik;
+            } else {
+                console.error("Properti 'nik' tidak ditemukan dalam struktur data.");
+            }
+        } else {
+            console.error("Data tidak ditemukan di localStorage.");
+        }
       // Parse the JSON string into an object
-      var parsedData = JSON.parse(data);
-      var nik = parsedData.data.nik;
-      var nama = parsedData.data.nama;
-      var unit_id = parsedData.data.unit_id;
-      var usia = parsedData.data.usia;
-      var nomor_telp = parsedData.data.nomor_telp;
-      var email = parsedData.data.email;
+      // var parsedData = JSON.parse(data);
+      // var nik = parsedData.data.nik;
+      // var nama = parsedData.data.nama;
+      // var unit_id = parsedData.data.unit_id;
+      // var usia = parsedData.data.usia;
+      // var nomor_telp = parsedData.data.nomor_telp;
+      // var email = parsedData.data.email;
       var sub1 = localStorage.getItem('sub1');
       var sub2 = localStorage.getItem('sub2');
       var sub3 = localStorage.getItem('sub3');
@@ -110,11 +121,6 @@
         url: "api/api_cfit_kirim.php",
         data: {
           nik: nik,
-          nama: nama,
-          unit_id: unit_id,
-          usia: usia,
-          nomor_telp: nomor_telp,
-          email: email,
           sub1: sub1,
           sub2: sub2,
           sub3: sub3,

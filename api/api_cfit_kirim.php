@@ -8,7 +8,6 @@ $url = $url_api . 'api/Cfit/Store';
 
 $data = array(
     'nik' => $_POST['nik'],
-    'nama' => $_POST['nama'],
     'test1' => $_POST['sub1'],
     'test2' => $_POST['sub2'],
     'test3' => $_POST['sub3'],
