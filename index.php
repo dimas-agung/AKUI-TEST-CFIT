@@ -133,97 +133,97 @@
         var nik = $("#ussr").val();
         if (nik.trim() !== "") {
           window.location.href = "instruksiAwal.php";
-          // $.ajax({
-          //   url: "api/api_cfit_login.php",
-          //   type: "GET",
-          //   data: { nik: nik },
-          //   dataType: "json",
-          //   success: function (data) {
-          //     if (data.status === 'success' && data.data && data.data.nama) {
-          //       var nama = data.data.nama;
-          //       localStorage.setItem('nama', nama);
-          //       $.ajax({
-          //         url: "api/api_undangan_psikotes.php",
-          //         type: "GET",
-          //         data: { nik: nik },
-          //         dataType: "json",
-          //         success: function (data) {
-          //           if (data && Array.isArray(data) && data.length > 0) {
-          //             var dataItem = data[0]; 
-          //             if (dataItem && dataItem.tanggal && dataItem.jam_mulai && dataItem.jam_selesai) {
-          //                 var tanggalData = dataItem.tanggal;
-          //                 var jamMulaiParts = dataItem.jam_mulai.split(":");
-          //                 var jamSelesaiParts = dataItem.jam_selesai.split(":");
-          //                 if (jamMulaiParts.length === 3 && jamSelesaiParts.length === 3) {
-          //                     var startHour = parseInt(jamMulaiParts[0]);
-          //                     var startMinute = parseInt(jamMulaiParts[1]);
-          //                     var endHour = parseInt(jamSelesaiParts[0]);
-          //                     var endMinute = parseInt(jamSelesaiParts[1]);
-          //                     var currentDate = new Date();
-          //                     var currentDateFormatted = currentDate.toISOString().slice(0, 10);
-          //                     var currentTime = currentDate.getHours();
-          //                     var tolerance = 0; 
-          //                     if (currentDateFormatted === tanggalData && currentTime >= startHour - tolerance && currentTime < endHour + tolerance) {
-          //                         localStorage.setItem('key', JSON.stringify(dataItem));
-          //                         window.location.href = "instruksiAwal.php";
-          //                     } else {
-          //                         var formattedStartTime = ("0" + startHour).slice(-2) + ":" + ("0" + startMinute).slice(-2);
-          //                         var formattedEndTime = ("0" + endHour).slice(-2) + ":" + ("0" + endMinute).slice(-2);
-          //                         Swal.fire({
-          //                             icon: 'warning',
-          //                             title: 'Oops...',
-          //                             text: 'Tes ini hanya bisa dilakukan pada ' + tanggalData + ', mulai pukul ' + formattedStartTime + ' sampai ' + formattedEndTime + '.',
-          //                         });
-          //                     }
-          //                 } else {
-          //                     Swal.fire({
-          //                         icon: 'error',
-          //                         title: 'Format jam tidak valid',
-          //                         text: 'Format jam mulai atau jam selesai tidak valid. Pastikan formatnya adalah jam:menit:detik.',
-          //                         confirmButtonText: 'OK'
-          //                     });
-          //                 }
-          //             } else {
-          //                 Swal.fire({
-          //                     icon: 'error',
-          //                     title: 'Data tidak lengkap',
-          //                     text: 'Data tidak lengkap untuk tanggal, jam mulai, atau jam selesai.',
-          //                     confirmButtonText: 'OK'
-          //                 });
-          //             }
-          //           } else {
-          //               Swal.fire({
-          //                   icon: 'error',
-          //                   title: 'Data tidak valid',
-          //                   text: 'Data tidak valid atau tidak ada data yang tersedia.',
-          //                   confirmButtonText: 'OK'
-          //               });
-          //           }
-          //         },
-          //         error: function (error) {
-          //           Swal.fire({
-          //             icon: 'error',
-          //             title: 'Oops...',
-          //             text: 'Terjadi kesalahan saat memuat data',
-          //           });
-          //         }
-          //       });
-          //     } else {
-          //       Swal.fire({
-          //         icon: 'error',
-          //         title: 'Oops...',
-          //         text: 'NIK yang kamu masukkan mungkin tidak terdaftar atau salah',
-          //       });
-          //     }
-          //   },
-          //   error: function (error) {
-          //     Swal.fire({
-          //       icon: 'error',
-          //       title: 'Oops...',
-          //       text: 'Terjadi kesalahan saat memuat data',
-          //     });
-          //   }
-          // });
+          $.ajax({
+            url: "api/api_cfit_login.php",
+            type: "GET",
+            data: { nik: nik },
+            dataType: "json",
+            success: function (data) {
+              if (data.status === 'success' && data.data && data.data.nama) {
+                var nama = data.data.nama;
+                localStorage.setItem('nama', nama);
+                $.ajax({
+                  url: "api/api_undangan_psikotes.php",
+                  type: "GET",
+                  data: { nik: nik },
+                  dataType: "json",
+                  success: function (data) {
+                    if (data && Array.isArray(data) && data.length > 0) {
+                      var dataItem = data[0]; 
+                      if (dataItem && dataItem.tanggal && dataItem.jam_mulai && dataItem.jam_selesai) {
+                          var tanggalData = dataItem.tanggal;
+                          var jamMulaiParts = dataItem.jam_mulai.split(":");
+                          var jamSelesaiParts = dataItem.jam_selesai.split(":");
+                          if (jamMulaiParts.length === 3 && jamSelesaiParts.length === 3) {
+                              var startHour = parseInt(jamMulaiParts[0]);
+                              var startMinute = parseInt(jamMulaiParts[1]);
+                              var endHour = parseInt(jamSelesaiParts[0]);
+                              var endMinute = parseInt(jamSelesaiParts[1]);
+                              var currentDate = new Date();
+                              var currentDateFormatted = currentDate.toISOString().slice(0, 10);
+                              var currentTime = currentDate.getHours();
+                              var tolerance = 0; 
+                              if (currentDateFormatted === tanggalData && currentTime >= startHour - tolerance && currentTime < endHour + tolerance) {
+                                  localStorage.setItem('key', JSON.stringify(dataItem));
+                                  window.location.href = "instruksiAwal.php";
+                              } else {
+                                  var formattedStartTime = ("0" + startHour).slice(-2) + ":" + ("0" + startMinute).slice(-2);
+                                  var formattedEndTime = ("0" + endHour).slice(-2) + ":" + ("0" + endMinute).slice(-2);
+                                  Swal.fire({
+                                      icon: 'warning',
+                                      title: 'Oops...',
+                                      text: 'Tes ini hanya bisa dilakukan pada ' + tanggalData + ', mulai pukul ' + formattedStartTime + ' sampai ' + formattedEndTime + '.',
+                                  });
+                              }
+                          } else {
+                              Swal.fire({
+                                  icon: 'error',
+                                  title: 'Format jam tidak valid',
+                                  text: 'Format jam mulai atau jam selesai tidak valid. Pastikan formatnya adalah jam:menit:detik.',
+                                  confirmButtonText: 'OK'
+                              });
+                          }
+                      } else {
+                          Swal.fire({
+                              icon: 'error',
+                              title: 'Data tidak lengkap',
+                              text: 'Data tidak lengkap untuk tanggal, jam mulai, atau jam selesai.',
+                              confirmButtonText: 'OK'
+                          });
+                      }
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Data tidak valid',
+                            text: 'Data tidak valid atau tidak ada data yang tersedia.',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                  },
+                  error: function (error) {
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'Terjadi kesalahan saat memuat data',
+                    });
+                  }
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'NIK yang kamu masukkan mungkin tidak terdaftar atau salah',
+                });
+              }
+            },
+            error: function (error) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Terjadi kesalahan saat memuat data',
+              });
+            }
+          });
         } else {
           $("#errorMessage").text("NIK Tidak Boleh Kosong");
         }
